@@ -9,14 +9,8 @@ public class Topico {
     private Long id;
     private String comentario;
     @ManyToOne
-    private Visitante autor;
+    private Visitante visitante;
 
-    public Topico() {
-    }
-
-    public Topico(String comentario) {
-        this.comentario = comentario;
-    }
 
     public String getComentario() {
         return comentario;
@@ -26,11 +20,19 @@ public class Topico {
         this.comentario = comentario;
     }
 
-    public Visitante getAutor() {
-        return autor;
+    public Visitante getVisitante() {
+        return visitante;
     }
 
-    public void setAutor(Visitante autor) {
-        this.autor = autor;
+    public void setVisitante(Visitante visitante) {
+        this.visitante = visitante;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

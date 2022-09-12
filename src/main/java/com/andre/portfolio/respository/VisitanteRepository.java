@@ -1,4 +1,4 @@
-package com.andre.portfolio.respositories;
+package com.andre.portfolio.respository;
 
 import com.andre.portfolio.domain.Visitante;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -2,13 +2,13 @@ package com.andre.portfolio.dto;
 
 import com.andre.portfolio.domain.Visitante;
 
-public class NovoVisitante {
+public class VisitanteDto {
 
 
     private String nome;
     private String email;
 
-    public NovoVisitante(Visitante visitante) {
+    public VisitanteDto(Visitante visitante) {
         this.nome = visitante.getNome();
         this.email = visitante.getEmail();
     }
