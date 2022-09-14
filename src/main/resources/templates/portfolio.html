@@ -58,6 +58,12 @@ ul {
 em strong {
 	color: #ff0000;
 }
+.input-padrao {
+	display: block;
+	margin: 0 0 20px;
+	padding: 10px 20px;
+	width: 50%;
+}
 
     </style>
 </head>
@@ -128,7 +134,12 @@ em strong {
         <li class="itens">am_arao@hotmail.com</li>
         <li class="itens">(11)99707-6011</li>
     </ul>
-
-
+    <form th:action="@{/visitante/comentario}" th:object="${visitanteDto}" class="card-body" action="visitante/comentario" method="POST">
+        <textarea cols="70" rows="10" id="mensagem" class="input-padrao"></textarea>
+        <button class="btn btn-primary" type="submit">Comentar</button>
+    </form>
+    <form th:action="@{/visitante/comentario}" th:object="${visitanteDto}" class="card-body" action="visitante/comentario" method="DELETE">
+        <button class="btn btn-primary" type="submit">Excluir</button>
+    </form>
     </body>
 </html>

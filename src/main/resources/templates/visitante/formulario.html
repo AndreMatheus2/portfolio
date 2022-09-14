@@ -9,7 +9,7 @@
     <div th:replace="~{base :: titulo('Cadastre-se para saber mais sobre André')}"></div>
 
     <div class="card mb-3">
-        <form th:action="@{/visitante/novo}" th:object="${visitanteDto}" class="card-body" action="visitante/novo" method="POST">
+        <form th:action="@{/visitante/novo/portfolio}" th:object="${visitanteDto}" class="card-body" action="visitante/novo/portfolio" method="POST">
             <div class="form-group">
                 <label for="nome">Nome</label>
                 <input name="nome"  class="form-control" placeholder="Informe o nome da empresa!"/>
