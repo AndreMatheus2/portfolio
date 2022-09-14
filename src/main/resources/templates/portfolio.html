@@ -1,12 +1,134 @@
 <!DOCTYPE html>
 <!--suppress ALL -->
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Porfolio</title>
+<html>
+<head th:replace="~{base :: head}">
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Handlee&display=swap" rel="stylesheet">
+    <style>
+        .principal{
+	padding: 3em 0;
+	background: #FEFEFE;
+	width: 940px;
+	margin: 0 auto;
+}
+
+.principal p {
+	margin: 0 0 1em;
+}
+
+.principal strong {
+	font-weight: bold;
+}
+
+.principal em {
+	font-style: italic;
+}
+.lista {
+	width: 40%;
+	display: inline-block;
+	vertical-align: top;
+}
+ul {
+	font-style: italic;
+	display: inline-block;
+	vertical-align: top;
+	width: 20%;
+	margin-right: 3%;
+}
+.itens{
+	line-height: 1.5;
+}
+
+.itens:first-child{
+	font-weight: bold;
+}
+
+.itens:before {
+    content: "✰ "
+}
+.principal{
+	text-align: center;
+	background: #cccccc;
+	padding: 30px;
+}
+.titulo-principal{
+	padding-left: 20px;
+}
+em strong {
+	color: #ff0000;
+}
+
+    </style>
 </head>
-<body>
-    <form th:action="@{/visitante/novo}" th:object="${requisicao}" class="card-body" action="visitante/novo" method="POST">
-    </form>
-</body>
+<body class="container">
+    <div th:replace="~{base :: logo}"></div>
+
+    <div>
+      <div th:replace="~{base :: titulo('Bem-Vindo ao meu portfolio!')}"></div>
+    </div>
+
+    <section class="principal">
+        <br>
+        <p>Me chamo <strong>André Matheus de Paula Arão</strong>, tenho 22 anos, sou Programador Java Júnior e estudante no grupo <strong>Go Ahead</strong></p>
+
+        <p id="missao"><em>Minha missão é: <strong>Conseguir entrar no mercado de trabalho e evoluir mais ainda como profissional</strong></em></p>
+        <br>
+        <br>
+        <br>
+        <p>Desenvolvimento e manutenção de sistemas corporativos utilizando a metodologia ágil e tecnologia Java em</p>
+        <p>todas as fases do processo de construção e teste de software. Utilizo frequentemente</p>
+        <p>a IDE Intellij e sistema operacional Linux Ubuntu.</p>
+        <br>
+        <br>
+        <br>
+        <p><strong>ESPECIALIZAÇÕES</strong></p>
+        <p>Instituição:<strong>Alura</strong></p>
+        <p>Curso:<strong> JavaScript</strong> - Lógica de programação</p>
+        <p>Curso:<strong> HTML5 e CSS3:</strong> - As primeiras páginas da Web</p>
+        <p>Curso:<strong> Java JRE e JDK:</strong> - Escreva o seu primeiro código com Eclipse</p>
+        <p>Curso:<strong> Java OO:</strong> - Introdução à Orientação a Objetos</p>
+        <p>Curso:<strong> Java Polimorfismo: </strong> - Entenda herança e interfaces</p>
+        <p>Curso:<strong> Java Exceções:</strong> - Aprenda a criar, lançar e controlar exceções</p>
+        <p>Curso:<strong> Java e java.lang:</strong> - Programe com a classe Object e String</p>
+        <p>Curso:<strong> Java e java.util:</strong> - Coleções, Wrappers e Lambda expressions </p>
+        <p>Curso:<strong> Java e java.io:</strong> - Streams, Reader e Writers</p>
+        <p>Curso:<strong> Java Collections:</strong> - Dominando Listas, Sets e Mapas</p>
+        <p>Curso:<strong> Java moderno:</strong> - Tire proveito dos novos recursos do Java 8</p>
+        <p>Curso:<strong> TDD e Java:</strong> - Testes automatizados com JUnit</p>
+        <p>Curso:<strong> Java Servlet:</strong> - Fundamentos da programação web Java, Autenticação, autorização e o padrão MVC</p>
+        <p>Curso:<strong> Maven:</strong> - Gerenciamento de dependências e build de aplicações Java</p>
+        <p>Curso:<strong> Java e JDBC:</strong> - Trabalhando com um banco de dados</p>
+        <p>Curso:<strong> Persistência com JPA:</strong> - Introdução ao Hibernate</p>
+        <p>Curso:<strong> Java e JPA:</strong> - Consultas avançadas, performance e modelos complexos</p>
+        <p>Curso:<strong> Spring Data JPA:</strong> - Repositórios, Consultas, Projeções e Specifications</p>
+        <p>Curso:<strong> Spring MVC:</strong> - Crie um web app com Thymeleaf, Bootstrap, Autenticação com Spring Security, API Rest e AJAX</p>
+        <p>Curso:<strong> Java Debug:</strong> - Técnicas para entender e melhorar o seu código</p>
+        <p>Curso:<strong> Spring Boot API REST:</strong> - Construa uma API, Segurança da API, Cache, Monitoramento, Profiles, Testes e Deploy</p>
+        <p>Curso:<strong> Docker:</strong> - criando e gerenciando containers</p>
+        <p>Curso:<strong> Docker Swarm:</strong> - Orquestrador de containers</p>
+        <p>Curso:<strong> Gitlab CI e Docker:</strong> - Pipeline de entrega contínua</p>
+        <p>Curso:<strong> Kubernetes:</strong> - Pods, Services e ConfigMaps</p>
+        <br>
+        <br>
+        <br>
+        <P>Projetos com grandes sucessos nunca será feito por uma pessoa e sim por uma equipe unida</P>
+        <P>em um propósito único.</P>
+        <br>
+        <br>
+        <br>
+        <div>
+        <p>Precisa de uma programador Java ?<br><a href="https://www.linkedin.com/in/andré-arão-51a6b0201/">Vamos trabalhar juntos!</a></p>
+        </div>
+    </section>
+    <br>
+    <ul class="lista">
+        <li class="itens"> <a href="https://www.linkedin.com/in/andré-arão-51a6b0201/">LINKEDIN</a></li>
+        <li class="itens"><a href="https://github.com/AndreMatheus2?tab=repositories">GITHUB</a></li>
+        <li class="itens">am_arao@hotmail.com</li>
+        <li class="itens">(11)99707-6011</li>
+    </ul>
+
+
+    </body>
 </html>
