@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!--suppress XmlUnboundNsPrefix -->
+<html lang="en">
+<head th:replace="~{base :: head}">
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Handlee&display=swap" rel="stylesheet">
+    <style>
+    </style>
+    <body class="container">
+
+
+
+    <form th:action="@{/visitante/comentario}" th:object="${topicoDto}" class="card-body" action="visitante/comentario" method="POST">
+        <textarea cols="70" rows="10" id="mensagem" class="input-padrao"></textarea>
+        <button class="btn btn-primary" type="submit">Comentar</button>
+    </form>
+    <form th:action="@{/visitante/comentario}" th:object="${topicoDto}" class="card-body" action="visitante/comentario" method="DELETE">
+        <button class="btn btn-primary" type="submit">Excluir</button>
+    </form>
+</body>
+</html>

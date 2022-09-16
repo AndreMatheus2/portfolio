@@ -20,7 +20,7 @@ public class Visitante {
     private Long id;
     private String nome;
     private String email;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "visitante", fetch = FetchType.LAZY)
     private Topico topico;
 
 

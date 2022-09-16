@@ -12,7 +12,7 @@ public class TopicoDto {
     private String id;
     private String comentario;
 
-    public Topico toVisitante() {
+    public Topico toTopico() {
         Topico topico = new Topico();
         topico.setComentario(comentario);
         return topico;

@@ -1,20 +1,17 @@
 package com.andre.portfolio.controller;
 
-
+import com.andre.portfolio.dto.TopicoDto;
 import com.andre.portfolio.dto.VisitanteDto;
-
 import com.andre.portfolio.model.Topico;
 import com.andre.portfolio.model.Visitante;
-import com.andre.portfolio.service.VisitanteService;
-
-import org.modelmapper.ModelMapper;
+import com.andre.portfolio.respository.TopicoRepository;
+import com.andre.portfolio.respository.VisitanteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("visitante")
@@ -22,9 +19,9 @@ public class VisitanteController {
 
 
     @Autowired
-    private VisitanteService visitanteService;
+    private VisitanteRepository visitanteRepository;
     @Autowired
-    private ModelMapper mapper;
+    private TopicoRepository topicoRepository;
 
     @GetMapping
     public String formulario(){
@@ -32,30 +29,38 @@ public class VisitanteController {
     }
 
     @PostMapping("novo/portfolio")
-    public String novo(VisitanteDto visitanteDto){
+    public String novo(VisitanteDto visitanteDto, TopicoDto topicoDto){
         if(visitanteDto.getNome().isEmpty() || visitanteDto.getEmail().isEmpty()) {
             return "visitante/formulario";
         }
 
-        //Visitante visitante = visitanteDto.toVisitante();
-        //visitanteRepository.save(visitante);
+        Visitante visitante = visitanteDto.toVisitante();
+        try {
+            Topico topico = topicoDto.toTopico();
+            visitante.setTopico(topico);
+        }catch (NullPointerException e){
+            System.out.print("Comentario nulo");
+        }finally {
+            visitanteRepository.save(visitante);
+            return "portfolio";
+        }
 
-        visitanteService.create(visitanteDto);
-        visitanteService.findAll();
-
-        return "portfolio";
     }
 
-    @PostMapping("visitante/comentario")
-    public void comentar(Visitante visitante, String comentario){
-         visitanteService.createComentario(visitante, comentario);
+    @PostMapping("comentario")
+    public String comentar(@Valid TopicoDto topicoDto, BindingResult result){
+        String comentario = topicoDto.getComentario();
+        Topico topico = topicoDto.toTopico();
+        topico.setComentario(comentario);
+        topicoRepository.save(topico);
+        return "lista";
     }
 
 
 
-    @DeleteMapping("visitante/comentario")
-    public void excluir(){
-    }
+  //  @DeleteMapping("visitante/comentario")
+
+
 
 
 }

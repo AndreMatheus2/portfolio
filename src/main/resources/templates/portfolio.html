@@ -82,14 +82,17 @@ em strong {
         <br>
         <br>
         <br>
-        <p>Desenvolvimento e manutenção de sistemas corporativos utilizando a metodologia ágil e tecnologia Java em</p>
+        <p>Desenvolvimento e manutenção de sistemas corporativos utilizando a metodologia ágil e a tecnologia Java em</p>
         <p>todas as fases do processo de construção e teste de software. Utilizo frequentemente</p>
-        <p>a IDE Intellij e sistema operacional Linux Ubuntu.</p>
+        <p>a IDE Intellij, Eclipse e o sistema operacional Linux Ubuntu.</p>
         <br>
         <br>
         <br>
         <p><strong>ESPECIALIZAÇÕES</strong></p>
         <p>Instituição:<strong>Alura</strong></p>
+        <p>Curso:<strong> Arquitetura de computadores:</strong> - Por trás de como seu programa funciona</p>
+        <p>Curso:<strong> Linux I:</strong> - Conhecendo e utilizando o terminal</p>
+        <p>Curso:<strong> Git e Github:</strong> - Controle e compartilhe seu código</p>
         <p>Curso:<strong> JavaScript</strong> - Lógica de programação</p>
         <p>Curso:<strong> HTML5 e CSS3:</strong> - As primeiras páginas da Web</p>
         <p>Curso:<strong> Java JRE e JDK:</strong> - Escreva o seu primeiro código com Eclipse</p>
@@ -131,15 +134,17 @@ em strong {
     <ul class="lista">
         <li class="itens"> <a href="https://www.linkedin.com/in/andré-arão-51a6b0201/">LINKEDIN</a></li>
         <li class="itens"><a href="https://github.com/AndreMatheus2?tab=repositories">GITHUB</a></li>
+        <li class="itens"><a href="https://cursos.alura.com.br/user/am-arao">ALURA</a></li>
         <li class="itens">am_arao@hotmail.com</li>
         <li class="itens">(11)99707-6011</li>
     </ul>
-    <form th:action="@{/visitante/comentario}" th:object="${visitanteDto}" class="card-body" action="visitante/comentario" method="POST">
-        <textarea cols="70" rows="10" id="mensagem" class="input-padrao"></textarea>
+    <form th:action="@{/visitante/comentario}" th:object="${topicoDto}" class="card-body" action="visitante/comentario" method="POST">
+        <div>
+            <label for="comentario"></label>
+            <textarea th:field="*{comentario}" cols="70" rows="10" id="mensagem" class="input-padrao" placeholder="Deixe seu comentário!"></textarea>
+        </div>
         <button class="btn btn-primary" type="submit">Comentar</button>
     </form>
-    <form th:action="@{/visitante/comentario}" th:object="${visitanteDto}" class="card-body" action="visitante/comentario" method="DELETE">
-        <button class="btn btn-primary" type="submit">Excluir</button>
-    </form>
+
     </body>
 </html>
