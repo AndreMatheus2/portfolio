@@ -1,22 +1,84 @@
 <!DOCTYPE html>
-<!--suppress XmlUnboundNsPrefix -->
-<html lang="en">
+<!--suppress ALL -->
+<html>
 <head th:replace="~{base :: head}">
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Handlee&display=swap" rel="stylesheet">
     <style>
+        .principal{
+	padding: 3em 0;
+	background: #FEFEFE;
+	width: 940px;
+	margin: 0 auto;
+}
+
+.principal p {
+	margin: 0 0 1em;
+}
+
+.principal strong {
+	font-weight: bold;
+}
+
+.principal em {
+	font-style: italic;
+}
+.lista {
+	width: 40%;
+	display: inline-block;
+	vertical-align: top;
+}
+ul {
+	font-style: italic;
+	display: inline-block;
+	vertical-align: top;
+	width: 20%;
+	margin-right: 3%;
+}
+.itens{
+	line-height: 1.5;
+}
+
+.itens:first-child{
+	font-weight: bold;
+}
+
+.itens:before {
+    content: "✰ "
+}
+.principal{
+	text-align: center;
+	background: #cccccc;
+	padding: 30px;
+}
+.titulo-principal{
+	padding-left: 20px;
+}
+em strong {
+	color: #ff0000;
+}
+.input-padrao {
+	display: block;
+	margin: 0 0 20px;
+	padding: 10px 20px;
+	width: 50%;
+}
+
     </style>
-    <body class="container">
+</head>
+<body class="container">
+<div th:replace="~{base :: logo}"></div>
 
+<div>
+    <div th:replace="~{base :: titulo('Lista de empresas visitantes e seus comentários!')}"></div>
+</div>
 
-
-    <form th:action="@{/visitante/comentario}" th:object="${topicoDto}" class="card-body" action="visitante/comentario" method="POST">
-        <textarea cols="70" rows="10" id="mensagem" class="input-padrao"></textarea>
-        <button class="btn btn-primary" type="submit">Comentar</button>
-    </form>
-    <form th:action="@{/visitante/comentario}" th:object="${topicoDto}" class="card-body" action="visitante/comentario" method="DELETE">
-        <button class="btn btn-primary" type="submit">Excluir</button>
-    </form>
+<div>
+    <div th:each="visitante : ${visitantes}">
+        <div> <input class="form-control mt-5" th:value="${visitante.nome}" value="Nome"/></div>
+        <div> <input class="form-control" th:value="${visitante.comentario}" value="Comentario"/></div>
+    </div>
+</div>
 </body>
 </html>

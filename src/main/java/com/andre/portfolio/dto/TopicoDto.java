@@ -10,11 +10,11 @@ import lombok.Setter;
 public class TopicoDto {
 
     private String id;
-    private String comentario;
+    private String email;
 
     public Topico toTopico() {
         Topico topico = new Topico();
-        topico.setComentario(comentario);
+        topico.setEmail(email);
         return topico;
     }
 

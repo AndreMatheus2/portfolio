@@ -10,17 +10,15 @@ import javax.persistence.*;
 @Setter
 public class Topico {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    private String comentario;
-    @OneToOne
-    private Visitante visitante;
+
+    private String email;
 
     public Topico() {
     }
 
-    public Topico(String comentario, Visitante visitante) {
-        this.comentario = comentario;
-        this.visitante = visitante;
+    public Topico(String email) {
+        this.email = email;
     }
 }

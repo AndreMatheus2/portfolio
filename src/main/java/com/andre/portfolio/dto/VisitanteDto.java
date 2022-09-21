@@ -9,16 +9,15 @@ import lombok.Setter;
 @Setter
 public class VisitanteDto {
 
-    private String id;
     private String nome;
-    private String email;
-    private Topico topico;
+    private String comentario;
+
+
 
     public Visitante toVisitante() {
         Visitante visitante = new Visitante();
         visitante.setNome(nome);
-        visitante.setEmail(email);
-        visitante.setTopico(topico);
+        visitante.setComentario(comentario);
         return visitante;
     }
 

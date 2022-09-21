@@ -4,14 +4,19 @@ import com.andre.portfolio.dto.TopicoDto;
 import com.andre.portfolio.dto.VisitanteDto;
 import com.andre.portfolio.model.Topico;
 import com.andre.portfolio.model.Visitante;
+import org.springframework.security.core.context.SecurityContextHolder;
 import com.andre.portfolio.respository.TopicoRepository;
 import com.andre.portfolio.respository.VisitanteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("visitante")
@@ -29,38 +34,30 @@ public class VisitanteController {
     }
 
     @PostMapping("novo/portfolio")
-    public String novo(VisitanteDto visitanteDto, TopicoDto topicoDto){
-        if(visitanteDto.getNome().isEmpty() || visitanteDto.getEmail().isEmpty()) {
+    public String novo(TopicoDto topicoDto){
+        if(topicoDto.getEmail().isEmpty()) {
             return "visitante/formulario";
         }
 
-        Visitante visitante = visitanteDto.toVisitante();
-        try {
-            Topico topico = topicoDto.toTopico();
-            visitante.setTopico(topico);
-        }catch (NullPointerException e){
-            System.out.print("Comentario nulo");
-        }finally {
-            visitanteRepository.save(visitante);
-            return "portfolio";
-        }
-
+        Topico topico = topicoDto.toTopico();
+        topicoRepository.save(topico);
+        return "portfolio";
     }
 
     @PostMapping("comentario")
-    public String comentar(@Valid TopicoDto topicoDto, BindingResult result){
-        String comentario = topicoDto.getComentario();
-        Topico topico = topicoDto.toTopico();
-        topico.setComentario(comentario);
-        topicoRepository.save(topico);
+    public String comentar(VisitanteDto visitanteDto, Model model){
+       if(visitanteDto.getNome().isEmpty() || visitanteDto.getComentario().isEmpty()){
+           return "portfolio";
+       }
+       Visitante visitante = visitanteDto.toVisitante();
+       visitanteRepository.save(visitante);
+
+       List<Visitante> visitantes = visitanteRepository.findAll();
+       //List<Visitante> visitantes = Arrays.asList(visitante);
+        model.addAttribute("visitantes", visitantes);
+
         return "lista";
     }
 
-
-
   //  @DeleteMapping("visitante/comentario")
-
-
-
-
 }

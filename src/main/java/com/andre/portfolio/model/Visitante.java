@@ -16,12 +16,9 @@ import javax.validation.constraints.NotEmpty;
 @NoArgsConstructor
 public class Visitante {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String nome;
-    private String email;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "visitante", fetch = FetchType.LAZY)
-    private Topico topico;
-
+    private String comentario;
 
 }
